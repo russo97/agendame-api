@@ -13,7 +13,7 @@ use App\Http\Resources\UserResource;
 
 class RegisterController extends Controller
 {
-  public function __invoke (RegisterRequest $request)
+  public function __invoke (RegisterRequest $request): UserResource
   {
     $input = $request -> validated();
 
