@@ -20,8 +20,11 @@ class SendWelcomeEmail
     /**
      * Handle the event.
      */
-    public function handle(UserRegistered $event): void
+    public function handle(object $event): void
     {
+        /**
+         * @var \App\Models\User
+         */
         $user = $event -> user;
 
         Mail::to($user -> email) -> send(new WelcomeMail($user));

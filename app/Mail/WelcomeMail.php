@@ -28,7 +28,7 @@ class WelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Bem vindo ao AgendaMe',
+            subject: sprintf('Bem vindo ao %s.', config('app.name')),
         );
     }
 
