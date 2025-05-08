@@ -12,6 +12,8 @@ use App\Http\Resources\UserResource;
 
 use App\Exceptions\UserHasBeenTakenException;
 
+use App\Events\UserRegistered;
+
 class RegisterController extends Controller
 {
   /**
@@ -29,6 +31,8 @@ class RegisterController extends Controller
 
     $input['password'] = bcrypt($input['password']);
     $user = User::query() -> create($input);
+
+    UserRegistered::dispatch($user);
 
     return new UserResource($user);
   }
